@@ -33,11 +33,6 @@ describe(`InputGroup - Phone number`, () => {
     <InputGroup
       label={label}
       flex={flex}
-      help={
-        <div>
-          Enter your <strong>phone number</strong>
-        </div>
-      }
       onChange={onChange}
       dataTest={dataTest}
       onFocus={onFocus}
@@ -49,6 +44,11 @@ describe(`InputGroup - Phone number`, () => {
         value={selectValue}
         prefix={<CountryFlag code={countryFlagCode} />}
         ref={ref}
+        help={
+          <div>
+            Enter your <strong>phone number</strong>
+          </div>
+        }
       />
       <InputField placeholder={inputPlaceholder} maxLength={inputMaxLength} value={inputValue} />
     </InputGroup>,
@@ -73,8 +73,12 @@ describe(`InputGroup - Phone number`, () => {
   it("should have spaceAFter", () => {
     expect(group.prop("spaceAfter")).toBe(spaceAfter);
   });
-  it("should contain a select", () => {
+  it("should contain a data-test", () => {
     expect(component.render().prop("data-test")).toBe(dataTest);
+  });
+
+  it("should contain a data-state", () => {
+    expect(group.render().prop("data-state")).toBe("ok");
   });
   it("should contain a fake div with styling", () => {
     expect(component.find("InputGroup__FakeGroup").exists()).toBe(true);

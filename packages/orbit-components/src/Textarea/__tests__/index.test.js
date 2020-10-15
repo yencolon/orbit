@@ -68,6 +68,10 @@ describe(`Textarea with help`, () => {
     area.simulate("change");
     expect(onChange).toHaveBeenCalled();
   });
+
+  it("should have data-state", () => {
+    expect(area.render().prop("data-state")).toBe("ok");
+  });
   it("should execute onFocus method", () => {
     area.simulate("focus");
     expect(onFocus).toHaveBeenCalled();
@@ -94,6 +98,7 @@ describe(`Textarea number with error and help`, () => {
   it("should NOT contain a label", () => {
     expect(component.find("FormLabel").exists()).toBe(false);
   });
+
   it("should have size prop", () => {
     expect(component.find("Textarea__StyledTextArea").prop("size")).toBe(size);
   });
@@ -102,5 +107,9 @@ describe(`Textarea number with error and help`, () => {
   });
   it("renders FormFeedback", () => {
     expect(component.find(`FormFeedback`).exists()).toBe(true);
+  });
+
+  it("should have data-state", () => {
+    expect(component.find("Textarea__StyledTextArea").render().prop("data-state")).toBe("error");
   });
 });

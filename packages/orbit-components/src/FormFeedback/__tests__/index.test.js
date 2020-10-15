@@ -4,25 +4,18 @@ import { shallow } from "enzyme";
 
 import FormFeedback from "../index";
 
-describe("FormFeedback Error", () => {
-  const error = "error message";
-  const help = "help message";
-  const dataTest = "dataTest";
-  const component = shallow(<FormFeedback error={error} help={help} dataTest={dataTest} />);
+describe("FormFeedback", () => {
+  const dataTest = "test";
+  const error = "err";
+  const help = "help";
+  const component = shallow(<FormFeedback tooltipShown error={error} dataTest={dataTest} />);
+  const componentHelp = shallow(<FormFeedback tooltipShown help={help} dataTest={dataTest} />);
 
   it("should have data-test", () => {
-    expect(component.render().prop("data-test")).toBe(dataTest);
+    expect(component.find("FormFeedbackTooltip").prop("dataTest")).toBe(dataTest);
   });
-  it("should render error", () => {
-    expect(component.text()).toEqual(error);
-  });
-});
-
-describe("FormFeedback Help", () => {
-  const help = "test";
-  const component = shallow(<FormFeedback error={undefined} help={help} />);
-
-  it("should render help", () => {
-    expect(component.text()).toEqual(help);
+  it("should have children", () => {
+    expect(component.children().render().text()).toBe(error);
+    expect(componentHelp.children().render().text()).toBe(help);
   });
 });

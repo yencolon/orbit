@@ -14,6 +14,7 @@ export type Props = {|
   +placeholder?: TranslationString,
   +fileName?: string,
   +allowedFileTypes?: string | string[],
+  +insideInputGroup?: boolean,
   +help?: React$Node,
   +error?: React$Node,
   tabIndex?: string | number,

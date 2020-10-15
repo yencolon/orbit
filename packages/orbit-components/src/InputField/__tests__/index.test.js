@@ -184,7 +184,8 @@ describe(`InputField number with error and help`, () => {
     expect(component.find("InputField__Input").prop("min")).toBe(minValue);
     expect(component.find("InputField__Input").prop("max")).toBe(maxValue);
   });
-  it("should contain FeedBack", () => {
+
+  it("should contain FeedBack error", () => {
     expect(component.find(`FormFeedback`).exists()).toBe(true);
   });
   it("should has data-state error", () => {
