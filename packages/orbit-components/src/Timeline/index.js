@@ -26,7 +26,13 @@ const Timeline = ({ children, spaceAfter, dataTest }: Props) => {
 
   return childrenArr && childrenArr.length > 0 ? (
     <WrapperStyled spaceAfter={spaceAfter} data-test={dataTest}>
-      <Stack flex shrink direction={isDesktop ? "row" : "column"}>
+      <Stack
+        flex
+        shrink
+        direction={isDesktop ? "row" : "column"}
+        align="stretch"
+        desktop={{ align: "start" }}
+      >
         <TimelineStatusProvider>
           {React.Children.map(childrenArr, (child, i) => {
             if (React.isValidElement(child)) {
